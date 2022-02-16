@@ -1,39 +1,26 @@
-<h1>Show</h1>
+<h1 class="text-center mt-5 mb-3">Show</h1>
 
-
-
-<h2 > <%=@restaurant.name%> </h2>
-
-<li> <%= @restaurant.phone_number %> </li>
-<li> <%= @restaurant.address %> </li>
-<%= link_to 'EDIT', edit_restaurant_path %>
-
-<br>
-
-<%= link_to 'Back to the restaurants', restaurants_path %>
-<br>
-<br>
-<br>
-<%= link_to 'Give a review', new_restaurant_review_path(@restaurant) %>
-
-<br>
-<br>
-<br>
+<h2 class="text-center mb-5"> <%=@restaurant.name%> </h2>
 
 <div class="container">
-  <h2>reviews</h2>
+<%= link_to 'Back to the restaurants', restaurants_path, class: "m-5" %>
+  <div class="bg-light mt-5 p-2 border border-secondary rounded">
+    <li> tel: <%= @restaurant.phone_number %> </li>
+    <li> address: <%= @restaurant.address %> </li>
+    <li> category: <%= @restaurant.category %> </li>
+  </div>
+<%= link_to 'EDIT', edit_restaurant_path, class: "btn btn-primary mt-3 text-decoration-none text-light" %>
+<%= link_to "Delete #{@restaurant.name}", restaurant_path(@restaurant), class: "btn btn-danger mt-3 text-decoration-none text-light",
+method: :delete, data: { confirm: "Are you sure?" } %>
+
+<div class="bg-light mt-5 p-2 border border-secondary rounded">
+  <h3>reviews</h3>
   <ul>
     <% @restaurant.reviews.each do |review| %>
       <li>  <%= review.rating %> || tel: <%= review.content %> </li>
     <% end %>
   </ul>
+</div>
+<%= link_to 'Give a review', new_restaurant_review_path(@restaurant), class: "btn btn-primary mt-3 text-decoration-none text-light" %>
 
 </div>
-
-
-<%=  %>
-
-<br>
-<br>
-<br>
-<%= link_to "Delete #{@restaurant.name}", restaurant_path(@restaurant), method: :delete, data: { confirm: "Are you sure?" } %>
