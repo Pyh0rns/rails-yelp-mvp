@@ -11,9 +11,29 @@
 <br>
 
 <%= link_to 'Back to the restaurants', restaurants_path %>
+<br>
+<br>
+<br>
+<%= link_to 'Give a review', new_restaurant_review_path(@restaurant) %>
 
 <br>
 <br>
 <br>
 
+<div class="container">
+  <h2>reviews</h2>
+  <ul>
+    <% @restaurant.reviews.each do |review| %>
+      <li>  <%= review.rating %> || tel: <%= review.content %> </li>
+    <% end %>
+  </ul>
+
+</div>
+
+
+<%=  %>
+
+<br>
+<br>
+<br>
 <%= link_to "Delete #{@restaurant.name}", restaurant_path(@restaurant), method: :delete, data: { confirm: "Are you sure?" } %>
